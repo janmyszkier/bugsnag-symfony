@@ -70,7 +70,11 @@ class BugsnagListener implements EventSubscriberInterface
 
         $this->resolver->set($event->getRequest());
     }
-
+    
+    public function onException(GetResponseForExceptionEvent $event)
+    {
+        return $this->onKernelException($event);
+    }
     /**
      * Handle an http kernel exception.
      *
